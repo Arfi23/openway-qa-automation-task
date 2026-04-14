@@ -1,13 +1,11 @@
 -------------------------------------------------------------------------------
 Test set: com.openway.qa.TestAddToCart
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 56.976 s <<< FAILURE! - in com.openway.qa.TestAddToCart
-com.openway.qa.TestAddToCart.testAddToCart  Time elapsed: 56.607 s  <<< FAILURE!
-java.lang.AssertionError: Product was not added to cart! expected [true] but found [false]
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 21.344 s <<< FAILURE! - in com.openway.qa.TestAddToCart
+com.openway.qa.TestAddToCart.testAddToCart  Time elapsed: 20.977 s  <<< FAILURE!
+java.lang.AssertionError: Test failed due to exception
 	at org.testng.Assert.fail(Assert.java:111)
-	at org.testng.Assert.failNotEquals(Assert.java:1578)
-	at org.testng.Assert.assertTrue(Assert.java:57)
-	at com.openway.qa.TestAddToCart.testAddToCart(TestAddToCart.java:57)
+	at com.openway.qa.TestAddToCart.testAddToCart(TestAddToCart.java:80)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:578)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
