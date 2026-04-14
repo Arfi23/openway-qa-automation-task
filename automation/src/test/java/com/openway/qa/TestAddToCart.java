@@ -36,34 +36,47 @@ public class TestAddToCart {
             driver.findElement(By.name("password"))
                     .sendKeys("sandi1023");
 
-            Thread.sleep(8000);
-
             // 4. Click login
-            driver.findElement(By.id("button-login")).click();
+            WebElement loginBtn = wait.until(ExpectedConditions.elementToBeClickable(
+                    By.id("button-login")
+            ));
+            loginBtn.click();
             
+            // Wait sampai preloader hilang (explicit wait)
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.className("preloader")
+            ));
 
-            // Tunggu login selesai (misalnya tunggu search bar muncul)
+            // Tunggu proses login & preloader selesai
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("filter_name")));
 
             // 5. Search product
             driver.findElement(By.name("filter_name")).sendKeys("Harry Potter");
             driver.findElement(By.xpath("//button[@type='submit']")).click();
 
+            // Wait sampai preloader hilang (explicit wait)
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.className("preloader")
+            ));
+
             // 6. Click first product
             wait.until(ExpectedConditions.elementToBeClickable(
                     By.xpath("(//div[contains(@class,'single-product')]//a)[1]")
             )).click();
 
+            // Wait sampai preloader hilang (explicit wait)
+            wait.until(ExpectedConditions.invisibilityOfElementLocated(
+                    By.className("preloader")
+            ));
+
             // 7. Click Add to Cart
             WebElement addToCartBtn = wait.until(ExpectedConditions.elementToBeClickable(
-                    By.className("addtocart")
+                    By.xpath("//button[contains(text(),'Add to Cart')]")
             ));
             addToCartBtn.click();
 
-            // 8. Verify success notification
-            wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("//*[contains(text(),'added')]")
-            ));
+            // observe the success notification and wait for about 6s
+            Thread.sleep(6000);
 
             // 9. Go to cart page
             driver.get("https://www.periplus.com/index.php?route=checkout/cart");

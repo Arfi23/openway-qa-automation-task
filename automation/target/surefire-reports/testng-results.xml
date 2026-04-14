@@ -2,12 +2,12 @@
 <testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2026-04-14T14:28:59 WIB" name="Surefire suite" finished-at="2026-04-14T14:29:20 WIB" duration-ms="21007">
+  <suite started-at="2026-04-14T14:57:37 WIB" name="Surefire suite" finished-at="2026-04-14T14:58:24 WIB" duration-ms="47787">
     <groups>
     </groups>
-    <test started-at="2026-04-14T14:28:59 WIB" name="Surefire test" finished-at="2026-04-14T14:29:20 WIB" duration-ms="21007">
+    <test started-at="2026-04-14T14:57:37 WIB" name="Surefire test" finished-at="2026-04-14T14:58:24 WIB" duration-ms="47787">
       <class name="com.openway.qa.TestAddToCart">
-        <test-method signature="testAddToCart()[pri:0, instance:com.openway.qa.TestAddToCart@14d3bc22]" started-at="2026-04-14T14:28:59 WIB" name="testAddToCart" finished-at="2026-04-14T14:29:20 WIB" duration-ms="20977" status="FAIL">
+        <test-method signature="testAddToCart()[pri:0, instance:com.openway.qa.TestAddToCart@14d3bc22]" started-at="2026-04-14T14:57:37 WIB" name="testAddToCart" finished-at="2026-04-14T14:58:24 WIB" duration-ms="47760" status="FAIL">
           <exception class="java.lang.AssertionError">
             <message>
               <![CDATA[Test failed due to exception]]>
@@ -15,7 +15,7 @@
             <full-stacktrace>
               <![CDATA[java.lang.AssertionError: Test failed due to exception
 at org.testng.Assert.fail(Assert.java:111)
-at com.openway.qa.TestAddToCart.testAddToCart(TestAddToCart.java:80)
+at com.openway.qa.TestAddToCart.testAddToCart(TestAddToCart.java:93)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 at java.base/java.lang.reflect.Method.invoke(Method.java:578)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
