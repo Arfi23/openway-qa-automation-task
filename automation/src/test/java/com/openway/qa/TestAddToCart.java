@@ -42,29 +42,35 @@ public class TestAddToCart {
             ));
             loginBtn.click();
             
-            // Wait sampai preloader hilang (explicit wait)
+            // Wait for the preloader process (explicit wait)
             wait.until(ExpectedConditions.invisibilityOfElementLocated(
                     By.className("preloader")
             ));
 
-            // Tunggu proses login & preloader selesai
+            // Wait for login and preloader process to be done
             wait.until(ExpectedConditions.visibilityOfElementLocated(By.name("filter_name")));
 
             // 5. Search product
             driver.findElement(By.name("filter_name")).sendKeys("Harry Potter");
             driver.findElement(By.xpath("//button[@type='submit']")).click();
 
-            // Wait sampai preloader hilang (explicit wait)
+            // Wait for the preloader process (explicit wait)(explicit wait)
             wait.until(ExpectedConditions.invisibilityOfElementLocated(
                     By.className("preloader")
             ));
 
-            // 6. Click first product
-            wait.until(ExpectedConditions.elementToBeClickable(
-                    By.xpath("(//div[contains(@class,'single-product')]//a)[1]")
-            )).click();
+            // OLD 6. Click first product
+            // wait.until(ExpectedConditions.elementToBeClickable(
+            //         By.xpath("(//div[contains(@class,'single-product')]//a)[1]")
+            // )).click();
 
-            // Wait sampai preloader hilang (explicit wait)
+            // 6. Click the first product
+            WebElement firstProduct = driver.findElement(By.xpath("(//div[contains(@class,'single-product')]//a)[1]"));
+            String productLink = firstProduct.getAttribute("href"); // used for getting the unique product ID (Item ID Extraction)
+
+            firstProduct.click();
+
+            // Wait for the preloader process (explicit wait)
             wait.until(ExpectedConditions.invisibilityOfElementLocated(
                     By.className("preloader")
             ));
@@ -78,15 +84,22 @@ public class TestAddToCart {
             // observe the success notification and wait for about 6s
             Thread.sleep(6000);
 
+            // 8. Extract the unique ID of the added product (continuation of step 6)
+            String productId = productLink.split("/p/")[1].split("/")[0];
+
             // 9. Go to cart page
             driver.get("https://www.periplus.com/index.php?route=checkout/cart");
 
-            // 10. Verify product exists in cart
-            boolean productExists = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("//*[contains(text(),'Harry Potter')]")
-            )).isDisplayed();
+            System.out.println("Current URL: " + driver.getCurrentUrl());
 
-            Assert.assertTrue(productExists, "Product was not added to cart!");
+            Thread.sleep(6000); // to observe the cart page
+
+            // 10. Verify product exists in cart by checking the ID extracted from the product URL
+            boolean isProductInCart = driver.findElements(
+                By.xpath("//a[contains(@href,'" + productId + "')]")
+            ).size() > 0;
+
+            Assert.assertTrue(isProductInCart, "Product was not added to cart!");
 
         } catch (Exception e) {
             e.printStackTrace();
