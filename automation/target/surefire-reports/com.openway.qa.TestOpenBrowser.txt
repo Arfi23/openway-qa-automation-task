@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.openway.qa.TestOpenBrowser
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 44.654 s - in com.openway.qa.TestOpenBrowser
